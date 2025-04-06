@@ -1,0 +1,127 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>peachey2k2</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+ </head>
+
+ <body>
+  <header>
+    <div class="container">
+      <div id="branding">
+        <a href="/index.html" class="invis-link" style="font-size: 24px; color: #54ffff">peachey2k2</a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/index.html">[about]</a></li>
+          <li><a href="/blog">[blog]</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="showcase">
+    <div class="container" id="site-body">
+      <script>
+        fetch("/blog-list.ini")
+        .then(response => {
+          if (response.ok == false) throw new Error("Blog list not found");
+          return response.text();
+        })
+        .then(text => INI.parse(text))
+        .then(blogList => {          
+
+          const markedExt = {
+            renderer: {
+              image({href, text}) {
+                return `
+                  <div class="blog-image" style="display: inline-flex">
+                    <img src="${href}">
+                    <div class="blog-image-text">
+                      ${text}
+                    </div>
+                  </div>
+                `;
+              }
+            }
+          };
+
+          const urlParams = new URLSearchParams(window.location.search);
+          const curHash = urlParams.get("a");
+          let info = {};
+
+          if (curHash) {
+            let markdownDiv = document.createElement("div");
+            markdownDiv.id = "markdown-content";
+            document.getElementById("site-body").appendChild(markdownDiv);
+
+            fetch(blogList[curHash].filename)
+            .then(response => {
+              if (response.ok == false) throw new Error("Article not found");
+              return response.text();
+            })
+            .then(text => {
+              const infoRaw = text.substring(0, text.indexOf("---\n"));
+              info = INI.parse(infoRaw); // fuck json tbh
+              return text.substring(infoRaw.length + 4);
+            })
+            .then(markdown => {
+              markdownDiv.innerHTML = marked.use(markedExt).parse(markdown);
+            })
+            .catch(error => {
+              console.error("Error loading markdown:", error);
+              document.getElementById("markdown-content").innerHTML = 
+                "Failed to load content.";
+            });
+          } else {
+            let blogListDiv = document.createElement("div");
+            blogListDiv.className = "blog-list";
+            document.getElementById("site-body").appendChild(blogListDiv);
+
+            for (blogHash in blogList) {
+              const blog = blogList[blogHash];
+              const postCard = document.createElement('article');
+              const addr = `?a=${blogHash}`;
+              postCard.className = 'blog-card';
+              postCard.innerHTML = `
+                <div class="blog-image">
+                  <a href = "${addr}">
+                    <img src="https://placehold.co/200x200" alt="Sample Image">
+                  </a>
+                  <div class="blog-image-text">test</div>
+                </div>
+                <h3 class="blog-title">
+                  <a href="${addr}" class="invis-link" style="color: black">
+                    ${blog.title}
+                  </a>
+                </h3>
+              `;
+              blogListDiv.appendChild(postCard);
+            }
+          }
+        });
+      </script>
+    </div>
+
+    <div class="88x31" style="text-align: center">
+      <img src="/88x31/nixos.gif">
+      <img src="/88x31/zig.png">
+      <img src="/88x31/button215.gif">
+      <img src="/88x31/sdl.gif">
+      <img src="/88x31/opengl.gif">
+      <img src="/88x31/hasmile.gif">
+      <img src="/88x31/aoltos_a.gif">
+      <img src="/88x31/caramelldansen.gif">
+      <img src="/88x31/built_with_microsoft_notepad.gif">
+      <img src="/88x31/blends.gif">
+      <img src="/88x31/brave.gif">
+    </div>
+  </section>
+ 
+
+ </body>
+ </html>
