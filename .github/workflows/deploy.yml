@@ -34,9 +34,6 @@ jobs:
         run: |
           echo "outputs=$(nix flake show --json)" >> $GITHUB_OUTPUT
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v
-
       - name: Build Website
         run: |
           nix build .
