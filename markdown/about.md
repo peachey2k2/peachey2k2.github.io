@@ -20,17 +20,13 @@
   I'm a third year Computer Engineering student mainly focusing on game development and systems programming. I also make plugins to be used in the Godot engine. Most of my work is open source.
 </p>
 
-<h3 class="centered">
-  Games
-</h3>
+## Games
 
 [oniki](https://github.com/peachey2k2/oniki) - An open-source bullet-hell RPG made with Godot (wip)
 
 [ascii-puzzle-game](https://github.com/peachey2k2/ascii-puzzle-game) - A simple puzzle game with ascii graphics (wip)
 
-<h3 class="centered">
-  Godot Plugins
-</h3>
+## Godot Plugins
 
 [cheys-background-addon](https://github.com/peachey2k2/cheys-background-addon) - A simple plugin to put a background image behind your Godot editor
 
@@ -40,9 +36,7 @@
 
 [cheys-visual-movie-maker](https://github.com/peachey2k2/cheys-visual-movie-maker) - A video editor that lets you make videos using Godot's features (wip)
 
-<h3 class="centered">
-  Other Stuff
-</h3>
+## Other Stuff
 
 [etanks](https://github.com/peachey2k2/etanks) - Simple ComputerCraft program to keep track of your ender tanks
 

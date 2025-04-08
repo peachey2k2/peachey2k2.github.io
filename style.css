@@ -1,10 +1,7 @@
-@font-face {
-  font-family: 'Miracode'; /*a name to be used later*/
-  src: url('/Miracode.ttf'); /*URL to font*/
-}
-
 body {
-  font-family: "Miracode";
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  font-style: normal;
   margin: 0;
   padding: 0;
   background-color: #1717b2;
@@ -67,6 +64,7 @@ a {
   display: inline-block;
   border: solid 1px #000000;
   position: relative;
+  text-align: center;
 }
 
 .blog-image-text {
@@ -77,7 +75,8 @@ a {
   padding-right: 5px;
   transform: translateX(-50%);
   background-color: #b2b2b2;
-  font-size: 12px;
+  font-size: 18px;
+  line-height: 1.0;
   color: black;
 }
 
@@ -144,8 +143,8 @@ header nav {
 }
 
 #showcase p {
-  font-size: 18px;
-  line-height: 1.25;
+  font-size: 24px;
+  line-height: 1.0;
 }
 
 .button_1 {
@@ -183,7 +182,7 @@ footer {
 #markdown-content, #markdown-content * {
   /* all: revert; */
   box-sizing: border-box;
-  line-height: 1.5;
+  line-height: 1.0;
 }
 
 #markdown-content {
@@ -198,9 +197,11 @@ footer {
   color: black;
 }
 
-#markdown-content h1 { font-size: 2em; margin: 0.67em 0; }
-#markdown-content h2 { font-size: 1.5em; margin: 0.83em 0; }
-#markdown-content h3 { font-size: 1.2em; margin: 0.88em 0; }
+#markdown-content h1, h2, h3 {
+  font-size: 24px;
+  font-weight: normal;
+  margin: 0.67em 0;
+}
 
 #markdown-content .centered {
   text-align: center;
@@ -210,3 +211,8 @@ footer {
   color: #0000ff;
 }
 
+.centered-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
