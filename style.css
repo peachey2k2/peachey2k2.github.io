@@ -2,6 +2,7 @@ body {
   font-family: "VT323", monospace;
   font-weight: 400;
   font-style: normal;
+  font-variant-ligatures: none;
   margin: 0;
   padding: 0;
   background-color: #1717b2;
@@ -14,10 +15,21 @@ a {
 }
 
 .container {
-  width: 80%;
+  width: 70%;
   margin: auto;
   overflow: hidden;
-  padding: 5px;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
 }
 
 .invis-link {
@@ -48,9 +60,14 @@ a {
 }
 
 .blog-image img {
-  max-width: calc(100% - 10px);
+  max-width: calc(100% - 16px);
+  max-height: 500px;
   margin: 8px;
   position: relative;
+}
+
+.blog-card .blog-image img {
+  max-height: 200px;
 }
 
 .blog-image a {
@@ -58,17 +75,18 @@ a {
 }
 
 .blog-image {
+  max-width: calc(100% - 15px);
   margin: 5px;
   margin-top: 10px;
   object-fit: contain;
   display: inline-block;
   border: solid 1px #000000;
   position: relative;
-  text-align: center;
 }
 
 .blog-image-text {
   position: absolute;
+  object-fit: contain;
   top: -11px;
   left: 50%;
   padding-left: 5px;
@@ -180,17 +198,15 @@ footer {
 }
 
 #markdown-content, #markdown-content * {
-  /* all: revert; */
   box-sizing: border-box;
   line-height: 1.0;
 }
 
 #markdown-content {
-  width: 85%;
-  min-width: 700px;
-  margin: auto;
+  /* width: calc(75% - 40px); */
+  margin: 0 20px;
   overflow: hidden;
-  padding: 20px;
+  padding: 10px 15px;
   background-color: #b2b2b2;
   box-shadow: 20px 20px 0px #000000;
   margin-bottom: 30px;
