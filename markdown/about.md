@@ -17,8 +17,11 @@
   <a href="https://github.com/peachey2k2/nixos">system</a>
   <a href="https://github.com/peachey2k2/nixos/tree/master/configs">dotfiles</a>
   <br>
-  I'm a third year Computer Engineering student mainly focusing on game development and systems programming. I also make plugins to be used in the Godot engine. Most of my work is open source.
 </p>
+
+I'm a third year Computer Engineering student mainly focusing on game development and systems programming. I also make plugins to be used in the Godot engine. Most of my work is open source.
+
+This website is built with a bash script glued together with a [Nix](https://nixos.org/) flake. Each page gets built from a markdown file translated with [marked.js](https://marked.js.org/). Everything is hosted on [Github Pages](https://github.com/peachey2k2/peachey2k2.github.io).
 
 ## Games
 
