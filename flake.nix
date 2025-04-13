@@ -104,7 +104,7 @@
           mkdir -p "$out/b"
           touch "$out/blog-list.ini"
 
-          ls -1 "./blog" | while read file; do
+          ls -1r "./blog" | while read file; do
             if (echo $file | grep "\.md\$" > "/dev/null"); then
               nameStripped="''\'''${file%.md}'"
               nameHash=$(echo $nameStripped | md5sum | head -c 8)
