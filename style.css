@@ -28,7 +28,7 @@ a {
 
 @media (max-width: 768px) {
   .container {
-    width: 100%;
+    width: calc(100% - 20px);
   }
 }
 
@@ -151,7 +151,7 @@ header nav {
 #showcase {
   min-height: 400px;
   color: #fff;
-  padding: 20px;
+  padding: 20px 0;
 }
 
 #showcase h1 {
