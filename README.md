@@ -1,4 +1,4 @@
-This is the surce code for [peachey2k2.github.io](https://peachey2k2.github.io/).
+This is the source code for [peachey2k2.github.io](https://peachey2k2.github.io/).
 
 We use `nix` to handle dependencies, along with some shell scripting to build it all as a static website.
 
