@@ -40,7 +40,7 @@
           botLine="$(echo "$splittedTitle" | tail -n +2)"
 
           asp=$(${pkgs.imagemagick}/bin/identify -format '%[fx:w/h]' "images/$blogImage")
-          
+
           ${pkgs.imagemagick}/bin/magick -size 1200x800 xc:#0000ff \
           -font VT323.ttf -gravity Center -pointsize 72 \
           -fill \#000000 -draw 'rectangle 160, 100 1120, 740' \
@@ -69,7 +69,7 @@
           echo '</div>'                       >> "$out/index.html"
           cat "template/tail.html"            >> "$out/index.html"
         }
-        
+
         buildBlogPost() {
           mkdir -p "$out/b/$1"
           cat "template/head.html" |
@@ -100,7 +100,7 @@
             sed "s/@image@//g" |
             sed "s/@url@/\/blog/g"             >> "$out/blog/index.html"
           echo "<div class='blog-list'>"       >> "$out/blog/index.html"
-          
+
           mkdir -p "$out/b"
           touch "$out/blog-list.ini"
 
@@ -113,14 +113,14 @@
                 if [[ "$line" == "---" ]]; then
 
                   createThumbnail
-                  
+
                   echo "
                     <div class="blog-card">
                       <div class="blog-image">
                         <a href = \"/b/$nameHash\">
                           <img src=\"/images/$blogImage\" alt=\"Sample Image\">
                         </a>
-                        <div class=\"blog-image-text\">$blogDate</div>
+                        <time datetime=\"$blogDate\" class=\"blog-image-text\">$blogDate</time>
                       </div>
                       <h3 class=\"blog-title\">
                         <a href=\"/b/$nameHash\" class=\"invis-link\" style=\"color: black; text-decoration: underline\">
@@ -160,7 +160,7 @@
         buildMainPage
         buildBlogsList
 
-      '';      
+      '';
     };
 
     apps.default = {
@@ -171,7 +171,7 @@
         '';
       in
         "${script}/bin/run-server";
-        
+
     };
 
     defaultPackage.x86_64-linux = self.packages.default;

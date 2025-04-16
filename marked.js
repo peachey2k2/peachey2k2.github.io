@@ -1,13 +1,18 @@
+/** @type (text: string) => boolean */
+const isDate = (text) => !isNaN(new Date(text).getTime());
+
 module.exports = {
   renderer: {
     image({href, text}) {
+      const tag = isDate(text) ? 'time' : 'div';
+      const prop = isDate(text) ? `datetime=\"${text}\"` : '';
       return `
         <div class="centered-div">
           <div class="blog-image" style="display: inline-flex">
             <img src="${href}">
-            <div class="blog-image-text">
+            <${tag} ${prop} class="blog-image-text">
               ${text}
-            </div>
+            </${tag}>
           </div>
         </div>
       `;
