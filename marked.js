@@ -12,6 +12,7 @@ module.exports = {
         </div>
       `;
     },
+
     heading({depth, text}) {
       const decors = [
         "#######",
@@ -25,18 +26,26 @@ module.exports = {
         </h${depth}>
       `;
     },
-    code({lang, text}) {
-      const escapedText = escape(text);
+
+    code({lang: display, text: code}) {
+      const escapedText = escape(code);
+      const parts = display.split('@')
 
       return `
         <div class="centered-div">
           <div class="blog-image" style="display: inline-flex">
-            <pre style="margin: 8px; overflow-y: auto"><code class="language-${lang}">${escapedText}</code></pre>
+            <pre style="margin: 8px; overflow-y: auto"><code class="hljs ${(parts[0] ? "code-hl language-" + parts[0] : "")}">${escapedText}</code></pre>
             <div class="blog-image-text">
-              ${lang}
+              ${parts[1] || ""}
             </div>
           </div>
         </div>
+      `;
+    },
+
+    codespan({text}) {
+      return `
+        <code class="codespan">${text}</code>
       `;
     }
   },
