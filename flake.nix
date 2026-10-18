@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
   outputs = { self, nixpkgs }:
@@ -15,7 +15,7 @@
       packages = [
         marked
         hljs
-        pkgs.python3Minimal
+        # pkgs.python3Minimal
         pkgs.imagemagick
       ];
     };
@@ -42,16 +42,16 @@
           asp=$(${pkgs.imagemagick}/bin/identify -format '%[fx:w/h]' "images/$blogImage")
 
           ${pkgs.imagemagick}/bin/magick -size 1200x800 xc:#0000ff \
-            -font Miracode.ttf -gravity Center -pointsize 72 \
+            -font Miracode.ttf -gravity Center -pointsize 48 \
             -fill \#000000 -draw 'rectangle 160, 100 1120, 740' \
             -fill \#b2b2b2 -draw 'rectangle 120, 60 1080, 700' \
-            -fill \#000000 -annotate +0+180 "$topLine" \
-            -fill \#000000 -annotate +0+250 "$botLine" \
+            -fill \#000000 -annotate +20+190 "$topLine" \
+            -fill \#000000 -annotate +20+260 "$botLine" \
             -fill \#000000 -draw "rectangle %[fx:600-210*$asp-20], 80 %[fx:600+210*$asp+20], 540" \
             -fill \#b2b2b2 -draw "rectangle %[fx:600-210*$asp-16], 84 %[fx:600+210*$asp+16], 536" \
             -fill \#b2b2b2 -draw 'rectangle 500, 78 700, 86' \
-            -pointsize 40 \
-            -fill \#000000 -annotate +0-320 "$blogDate" \
+            -pointsize 28 \
+            -fill \#000000 -annotate +0-315 "$blogDate" \
             -draw "image SrcOver 0, -90 %[fx:420*$asp], 420 images/$blogImage" \
             "$out/images/thumb_$blogImage"
         }
